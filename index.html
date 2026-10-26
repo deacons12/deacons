@@ -87,7 +87,7 @@
 <div class="content">
 <section class="page active" id="page-home">
 <div class="stats">
-<div class="stat"><div><div class="label">إجمالي الطلاب</div><div class="num" id="statStudents">82</div></div><div class="bubble">👥</div></div>
+<div class="stat"><div><div class="label">إجمالي الطلاب</div><div class="num" id="statStudents">1</div></div><div class="bubble">👥</div></div>
 <div class="stat"><div><div class="label">الحاضرون في آخر تسجيل</div><div class="num" id="statPresent">—</div></div><div class="bubble" style="background:#e3f8ef;color:#19a779">✓</div></div>
 <div class="stat"><div><div class="label">الغائبون في آخر تسجيل</div><div class="num" id="statAbsent">—</div></div><div class="bubble" style="background:#ffe8ed;color:#e94d68">✕</div></div>
 <div class="stat"><div><div class="label">متوسط الدرجات المسجلة</div><div class="num" id="statAverage">—</div></div><div class="bubble" style="background:#fff2d9;color:#d68b00">★</div></div>
@@ -147,7 +147,7 @@
 <section class="page" id="page-reports">
 <div class="card"><div class="cardhead"><h2>التقارير والإحصائيات</h2><div class="toolbar"><button class="primary" onclick="printFullReport()">🖨️ طباعة التقرير الشامل</button><button class="secondary" onclick="exportCSV('students')">تنزيل قائمة الطلاب CSV</button></div></div>
 <div class="reportgrid">
-<div class="reportbox">إجمالي الطلاب<b id="rStudents">82</b></div>
+<div class="reportbox">إجمالي الطلاب<b id="rStudents">1</b></div>
 <div class="reportbox">إجمالي سجلات الدرجات<b id="rGrades">0</b></div>
 <div class="reportbox">إجمالي سجلات الحضور<b id="rAtt">0</b></div>
 <div class="reportbox">متوسط الدرجات العام<b id="rAvg">—</b></div>
@@ -175,7 +175,7 @@ const FIREBASE_DB_URL='https://deaconss-default-rtdb.europe-west1.firebasedataba
 const PENDING_KEY=KEY+'_pendingSync';
 let remoteReady=false, remoteBusy=false, saveTimer=null, lastRemoteSnapshot='', pendingSync=localStorage.getItem(PENDING_KEY)==='1', retryDelay=2000;
 function setSyncStatus(message,color='#a96b00'){const el=document.getElementById('syncStatus');if(el){el.textContent=message;el.style.color=color}}
-const initial=()=>({students:["ابانوب بيشوي", "أفرايم دانيال", "أنطونيوس رامز الفّي", "بافلي بشرى", "بافلي جون يسري", "بافلي سامي عزيز", "بولا ابانوب", "بولا أيمن عبده", "بيشوي اسامه جميل", "بيشوي رؤوف نعيم", "بيشوي مرزوق عزمي", "جاستن مينا عاطف", "جاستين مينا", "جرجس ثروت جرجس", "جرجس عطوان", "جون ممدوح بسطا", "رافائيل جورج", "رضاني بيشوي رضاني", "ريمون روماني سعيد", "ستيفن مايكل كريم", "ستيفن نادر اشرف", "شنوده إيميل بخيت", "عاطف ابانوب", "فادي عبده مرزوق", "فادي عطوان", "فادي وليد عاطف", "فليمون ريمون سامي", "فيلوباتير ريمون سمير", "فيلوباتير ملاك", "فيلوباتير منير لبيب", "فيلوباتير مينا قاصد", "فيلوباتير هاني حنالله", "كاراس ابانوب خليفه", "كاراس أيمن عبده", "كاراس جرجس", "كاراس حنا", "كاراس رأفت هلال", "كاراس فادي حليم", "كاراس مرضي خيري", "كاراس مرقص", "كاراس موسي عيد", "كاراس مينا", "كريم عماد سعد", "كيرلس بخيت جرجس", "كيرلس بسام حشمت", "كيرلس جودة ثابت", "كيرلس حنا لوقا", "كيرلس رضاني", "كيرلس زكي سمير", "كيرلس ظريف زكا", "كيرلس عزت سامي", "كيرلس موسي عيد", "كيفين صابر حسني", "ماثيو ناجي", "مارتن كيرلس", "مارتن مارك عبد الشهيد", "مارك أنطونيوس", "مارك مجدي البدري", "مارك نيبل نصحي", "ماير عادل عيسي", "مايكل عطا زاخر", "مجدي يوسف مجدي", "مكاري ميشيل", "ممدوح وجدي", "مينا اشرف زاخر", "مينا القمص", "مينا برسوم رفعت", "مينا ثروت رزق", "مينا خليفه راضي", "مينا صبحي جندي", "مينا عويضه معوض", "مينا فادي طلعت", "مينا منصور", "مينا موريس عبد السيد", "نادر اشرف مرزوق", "نوفير مينا نبيل", "هدرا خلف ساويرس", "هيدرا خلف ساويروس", "يوسف مينا حليم", "يوسف مينا عاطف", "يوسف نبيل بدروس", "يوسف وليد سامي"].map((name,i)=>({id:i+1,name,notes:''})),subjects:['رياضيات','لغة عربية','لغة إنجليزية','حاسب آلي'],grades:[],attendance:[],nextStudentId:83});
+const initial=()=>({students:[{id:1,name:'يوسف',notes:''}],subjects:['رياضيات','لغة عربية','لغة إنجليزية','حاسب آلي'],grades:[],attendance:[],nextStudentId:2});
 let db=load();
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY));if(x&&Array.isArray(x.students))return x}catch(e){}return initial()}
 function save(){
@@ -205,6 +205,14 @@ async function connectFirebase(){
     try{response=await fetch(FIREBASE_DB_URL+'/deaconss_weekly_tracker.json',{signal:controller.signal})}finally{clearTimeout(timeout)}
     if(!response.ok)throw new Error('قراءة البيانات: HTTP '+response.status);
     const remote=await response.json();
+    const migrationKey=KEY+'_youssef_only_migration_v1';
+    if(localStorage.getItem(migrationKey)!=='done'){
+      db={...initial(),subjects:remote&&Array.isArray(remote.subjects)?remote.subjects:initial().subjects,students:[{id:1,name:'يوسف',notes:''}],grades:[],attendance:[],nextStudentId:2};
+      localStorage.setItem(KEY,JSON.stringify(db));
+      pendingSync=true;
+      localStorage.setItem(PENDING_KEY,'1');
+      localStorage.setItem(migrationKey,'done');
+    }
     if(remote&&Array.isArray(remote.students)){
       if(pendingSync){
         // Local changes not yet confirmed are kept and uploaded instead of being overwritten by remote data.
